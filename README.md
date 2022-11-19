@@ -16,7 +16,7 @@
     - t2.small
     - t2.medium
 
-  SSHLocation:
+  #SSHLocation:
     Description: The IP address range that can be used to SSH to the EC2 instances
     Type: String
     MinLength: '9'
@@ -25,7 +25,7 @@
     AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
     ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
 
-Mappings:
+#Mappings:
   AWSInstanceType2Arch:
     t1.micro:
       Arch: PV64
@@ -37,7 +37,7 @@ Mappings:
       Arch: HVM64
     t2.medium:
       Arch: HVM64
-  AWSRegionArch2AMI:
+  #AWSRegionArch2AMI:
     us-east-1:
       PV64: ami-2a69aa47
       HVM64: ami-6869aa05
@@ -47,7 +47,7 @@ Mappings:
       HVM64: ami-7172b611
       HVMG2: ami-60aa3700
 
-Resources:
+#Resources:
   InstSecGrp:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -64,7 +64,7 @@ Resources:
         ToPort: '80'
         CidrIp: 0.0.0.0/0
 
-  EC2Webserver:
+  #EC2Webserver:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType:
@@ -87,24 +87,24 @@ Resources:
         - Key: "Type"
           Value: "Webserver"
 
-Outputs:
+#Outputs:
   InstanceId:
     Description: InstanceId of the newly created EC2 instance
     Value:
       Ref: EC2Webserver
-  AZ:
+  #AZ:
     Description: Availability Zone of the newly created EC2 instance
     Value:
       Fn::GetAtt:
       - EC2Webserver
       - AvailabilityZone
-  PublicDNS:
+  #PublicDNS:
     Description: Public DNSName of the newly created EC2 instance
     Value:
       Fn::GetAtt:
       - EC2Webserver
       - PublicDnsName
-  PublicIP:
+  #PublicIP:
     Description: Public IP address of the newly created EC2 instance
     Value:
       Fn::GetAtt:
