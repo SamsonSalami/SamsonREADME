@@ -1,11 +1,11 @@
-# SamsonREADME
-Parameters:
+# CloudFormation
+#Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
     Type: AWS::EC2::KeyPair::KeyName
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
 
-  InstType:
+  #InstType:
     Description: WebServer EC2 instance type
     Type: String
     Default: t2.micro
